@@ -43,7 +43,7 @@ def ingest_data():
     df_consolidado['cluster'] = df_consolidado['cluster'].astype('int')
     df_consolidado['cantidad_de_palabras_clave'] = df_consolidado['cantidad_de_palabras_clave'].astype('int')
     df_consolidado['porcentaje_de_palabras_clave'] = df_consolidado['porcentaje_de_palabras_clave'].astype('float')
-    df_consolidado['principales_palabras_clave'] = df_consolidado['principales_palabras_clave'].str.replace(r'\s+', ' ', regex=True)
+    df_consolidado['principales_palabras_clave'] = df_consolidado['principales_palabras_clave'].str.replace(r'\s+', ' ', regex=True).str.replace('.', '')
     #df_consolidado['principales_palabras_clave'] = df_consolidado['principales_palabras_clave'].apply(limpiar_espacios)
     df_consolidado=df_consolidado.drop_duplicates(subset=['cluster']).sort_values('cluster').reset_index(drop=True)
     df_final = df_consolidado
